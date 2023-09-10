@@ -1,0 +1,120 @@
+{
+    "position": "top",
+    "height": 30,
+    "modules-left": [
+        "custom/launcher",
+        "sway/workspaces",
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "battery",
+        "custom/date",
+        //"custom/weather",
+        "backlight#icon",
+        "backlight#value",
+        "clock",
+        // "tray",
+        "custom/power",
+    ],
+    // Modules configuration
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10,
+    },
+    "custom/launcher": {
+        "format": " ",
+        "on-click": "exec wofi -c ~/.config/wofi/config -I",
+        "tooltip": false,
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": " {icon} "
+    },
+    "custom/date": {
+        "format": "󰸗 {}",
+        "interval": 3600,
+        "exec": "$HOME/bin/waybar-date.sh"
+    },
+    "backlight#icon": {
+        "format": "{icon}",
+        "format-icons": [
+            ""
+        ],
+        "on-scroll-down": "brightnessctl -c backlight set 1%-",
+        "on-scroll-up": "brightnessctl -c backlight set +1%"
+    },
+    "backlight#value": {
+        "format": "{percent}%",
+        "on-scroll-down": "brightnessctl -c backlight set 1%-",
+        "on-scroll-up": "brightnessctl -c backlight set +1%"
+    },
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "$HOME/.config/waybar/scripts/power-menu.sh"
+    },
+    "clock": {
+        "format": "󰅐 {:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄{capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-full": "󱈑 {capacity}%",
+        "format-icons": [
+            "󱊡",
+            "󱊢",
+            "󱊣"
+        ]
+    },
+    "custom/weather": {
+        "exec": "~/.config/waybar/scripts/weather.sh Patiala",
+        "return-type": "json",
+        "interval": 600,
+    },
+    "network": {
+        "interval": 5,
+        "format-wifi": " {essid} ({signalStrength}%)", // Icon: wifi
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "xfce4-terminal -e 'nmtui'",
+    },
+    "network#vpn": {
+        "interface": "tun0",
+        "format": "  {essid} ({signalStrength}%)",
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    },
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%   {format_source}",
+        "format-bluetooth-muted": "🎧 {icon}  {format_source}",
+        "format-muted": "🔇 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "🎧",
+            "hands-free": "וֹ",
+            "headset": " ♫ ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                ""
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    },
+}

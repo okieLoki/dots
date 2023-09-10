@@ -1,0 +1,121 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: monospace;
+    font-weight: 500;
+    font-size: 14px;
+    min-height: 0;
+}
+
+body {
+    background-color: #060c1a; /* Dark background */
+    color: rgba(255, 255, 255, 1); /* White text */
+}
+
+#waybar {
+    background: #060c1a; /* Dark background */
+    color: rgba(255, 255, 255, 1); /* White text */
+}
+
+#workspaces {
+    margin: 5px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: rgb(125, 156, 166); /* Light blue text */
+}
+
+#workspaces button.focused {
+    color: rgb(125, 156, 166); /* Light blue text */
+    border-bottom: 2px solid rgb(125, 156, 166);
+}
+
+#workspaces button:hover {
+    background-color: rgba(95, 96, 98, 0.048); /* Darker and transparent */
+}
+
+#custom-date, #clock, #battery, #pulseaudio, #network{
+    padding: 0px 10px;
+    margin: 5px 0px;
+}
+
+
+
+#custom-date {
+    color: rgb(125, 156, 166); /* Light blue */
+}
+
+#custom-power {
+    color: black; /* Light blue */
+    background-color: rgb(127, 169, 182); /* Dark background */
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    padding: 0px 10px;
+}
+
+#clock {
+    color: rgb(125, 156, 166); /* Light blue */
+    border-radius: 0px 5px 5px 0px;
+    margin-right: 10px;
+}
+
+#battery {
+    color: rgb(125, 156, 166); /* Light blue */
+    margin-right: 10px;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(255, 255, 255, 1); /* White */
+        color: rgba(0, 0, 0, 1); /* Black */
+    }
+}
+
+#battery.charging {
+    color: rgb(125, 156, 166); /* Light blue */
+}
+
+#battery.critical:not(.charging) {
+    background-color: rgba(245, 60, 60, 0.9); /* Darker and transparent */
+    color: rgba(255, 255, 255, 1); /* White */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    color: rgb(125, 156, 166); /* Light blue */
+    margin-right: 10px;
+}
+
+#pulseaudio {
+    color: rgb(125, 156, 166); /* Light blue */
+    border-radius: 5px 0px 0px 5px;
+    margin-right: 10px;
+}
+
+#backlight.icon {
+    color: rgb(125, 156, 166); /* Light blue */
+    border-radius: 5px 0px 0px 5px;
+    padding: 8px;
+}
+
+#backlight.value {
+    color: rgb(125, 156, 166); /* Light blue */
+    padding: 2px;
+    margin-right: 10px;
+}
+
+#custom-launcher {
+    font-size: 15px;
+    margin-left: 15px;
+    margin-right: 10px;
+}
